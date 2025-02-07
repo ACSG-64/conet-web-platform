@@ -2,7 +2,7 @@ import type { z, ZodRawShape } from 'zod';
 import { InvalidDataException } from '../errors';
 
 /**
- * Utility to parse data with zod. 
+ * Utility to parse data with zod.
  * Custom exception is thrown in case the supplied data does not conform to the Zod schema.
  * @param schema A Zod schema
  * @param data {object} - Data to be parsed by the schema
