@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { env } from '$env/dynamic/private';
 import { i18n } from '$lib/i18n';
 import * as Sentry from '@sentry/sveltekit';

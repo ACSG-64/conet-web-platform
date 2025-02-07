@@ -66,6 +66,8 @@
         "arctic": "^3.2.4",
         "drizzle-orm": "^0.38.4",
         "postgres": "^3.4.5",
+        "reflect-metadata": "^0.2.2",
+        "tsyringe": "^4.8.0",
         "zod": "^3.24.1"
     }
 }
