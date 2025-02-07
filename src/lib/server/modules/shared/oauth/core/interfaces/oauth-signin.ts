@@ -2,7 +2,7 @@ import type { OAuthCallback, OAuthTokens } from '../models';
 import type { OAuthSigninElements } from '../models/oauth-signin-elements';
 import type { IOAuthProvider } from './provider';
 
-export const IOAuthSignin = Symbol();
+export const IOAuthSigninService = Symbol();
 
 /**
  * Provides methods for signin to external services and
