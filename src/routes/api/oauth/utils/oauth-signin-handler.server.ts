@@ -26,7 +26,7 @@ export function createOAuthSigninHandler(container: DependencyContainer, scopes:
             maxAge: 60 * 10,
             sameSite: 'lax'
         });
-        // Redirect to the external signin webpage 
+        // Redirect to the external signin webpage
         redirect(302, url);
     };
 }
