@@ -60,6 +60,8 @@
     },
     "dependencies": {
         "@inlang/paraglide-sveltekit": "^0.15.5",
+        "@octokit/core": "^5.2.0",
+        "@octokit/request-error": "^6.1.6",
         "@oslojs/crypto": "^1.0.1",
         "@oslojs/encoding": "^1.1.0",
         "@sentry/sveltekit": "^8.54.0",
