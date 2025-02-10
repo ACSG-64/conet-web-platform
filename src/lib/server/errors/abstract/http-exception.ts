@@ -1,8 +1,11 @@
-type httpException = {
-    status: number;
+export type httpExceptionCommon = {
     message?: string;
     originalError?: Error;
 };
+
+type httpException = {
+    status: number;
+} & httpExceptionCommon;
 
 /**
  * Abstract class for custom exceptions.
