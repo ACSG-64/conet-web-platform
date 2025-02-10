@@ -1,6 +1,6 @@
 import { zodSchemaParser } from '$lib/server/utils/custom-zod-schema-parser';
 import { z } from 'zod';
-import { BrandedClass } from '../../../models/abstract';
+import { BrandedClass } from '../../../../models/abstract';
 
 const schema = z.object({
     state: z.string().max(200).nonempty(),

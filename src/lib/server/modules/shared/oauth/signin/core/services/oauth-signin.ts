@@ -1,7 +1,8 @@
 import { generateState } from 'arctic';
+import type { OAuthTokens } from '../../../shared/models';
 import { OAuthStateMismatchException } from '../../errors';
 import type { IOAuthProvider, IOAuthSigninService } from '../interfaces';
-import type { OAuthCallback, OAuthTokens } from '../models';
+import type { OAuthCallback } from '../models';
 import { OAuthSigninElements } from '../models/oauth-signin-elements';
 
 /**

@@ -1,6 +1,6 @@
 import { Discord } from 'arctic';
+import { OAuthTokens } from '../../../shared/models';
 import type { IOAuthProvider } from '../../core/interfaces';
-import { OAuthTokens } from '../../core/models';
 
 export class DiscordOAuthProvider implements IOAuthProvider {
     private readonly provider: Discord;

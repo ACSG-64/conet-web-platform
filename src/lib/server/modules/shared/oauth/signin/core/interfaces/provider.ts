@@ -1,4 +1,4 @@
-import type { OAuthTokens } from '../models';
+import type { OAuthTokens } from '../../../shared/models';
 
 export const IOAuthProvider = Symbol();
 

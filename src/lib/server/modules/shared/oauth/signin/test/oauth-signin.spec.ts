@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { OAuthTokens } from '../../shared/models';
 import { IOAuthProvider } from '../core/interfaces';
-import { OAuthCallback, OAuthTokens } from '../core/models';
+import { OAuthCallback } from '../core/models';
 import { OAuthSigninService } from '../core/services';
 import { OAuthStateMismatchException } from '../errors';
 

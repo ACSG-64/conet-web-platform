@@ -1,4 +1,5 @@
-import type { OAuthCallback, OAuthTokens } from '../models';
+import type { OAuthTokens } from '../../../shared/models';
+import type { OAuthCallback } from '../models';
 import type { OAuthSigninElements } from '../models/oauth-signin-elements';
 import type { IOAuthProvider } from './provider';
 
