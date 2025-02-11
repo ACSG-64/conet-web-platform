@@ -61,6 +61,7 @@
         "vitest": "^3.0.5"
     },
     "dependencies": {
+        "@discordjs/rest": "^2.4.3",
         "@inlang/paraglide-sveltekit": "^0.15.5",
         "@octokit/core": "^5.2.0",
         "@octokit/request-error": "^6.1.6",
