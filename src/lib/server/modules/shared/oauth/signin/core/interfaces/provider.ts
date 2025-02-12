@@ -17,4 +17,9 @@ export interface IOAuthProvider {
      * @param code Received code form the callback
      */
     validateAuthorizationCode(code: string): Promise<OAuthTokens>;
+    /**
+     * Revokes the access token and potentially also the refresh token
+     * @param accessToken
+     */
+    revokeAccessToken(accessToken: string): Promise<void>;
 }

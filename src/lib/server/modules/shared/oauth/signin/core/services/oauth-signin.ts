@@ -21,4 +21,8 @@ export class OAuthSigninService implements IOAuthSigninService {
         if (state !== expectedState) throw new OAuthStateMismatchException();
         return provider.validateAuthorizationCode(code);
     }
+
+    signout(provider: IOAuthProvider, accessToken: string): Promise<void> {
+        return provider.revokeAccessToken(accessToken);
+    }
 }

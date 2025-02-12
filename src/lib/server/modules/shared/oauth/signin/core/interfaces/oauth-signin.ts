@@ -26,4 +26,11 @@ export interface IOAuthSigninService {
      * @returns OAuth tokens
      */
     getTokens(provider: IOAuthProvider, callback: OAuthCallback): Promise<OAuthTokens>;
+
+    /**
+     * Invalidates the access token and optionally the refresh token depending of the provider
+     * @param provider The OAuth provider
+     * @param accessToken An acceptable access token for the provider
+     */
+    signout(provider: IOAuthProvider, accessToken: string): Promise<void>;
 }
