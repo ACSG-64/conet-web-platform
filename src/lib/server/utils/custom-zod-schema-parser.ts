@@ -9,8 +9,8 @@ import { InvalidDataException } from '../errors';
  * @returns The parsed data
  * @throws InvalidDataException
  */
-export function zodSchemaParser(data: unknown, schema: z.ZodObject<ZodRawShape>) {
+export function zodSchemaParser<T>(data: T, schema: z.ZodObject<ZodRawShape>): T {
     const parsed = schema.safeParse(data);
     if (!parsed.success) throw new InvalidDataException(parsed.error);
-    return parsed.data;
+    return parsed.data as T;
 }
