@@ -1,7 +1,7 @@
 import {
     IOAuthProvider,
     IOAuthSigninService
-} from '$lib/server/modules/shared/oauth/core/interfaces';
+} from '$lib/server/modules/shared/oauth/signin/core/interfaces';
 import { redirect, type RequestEvent } from '@sveltejs/kit';
 import type { DependencyContainer } from 'tsyringe';
 

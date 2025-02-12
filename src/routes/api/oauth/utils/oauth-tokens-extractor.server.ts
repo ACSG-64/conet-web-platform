@@ -1,8 +1,9 @@
+import type { OAuthTokens } from '$lib/server/modules/shared/oauth/shared/models';
 import {
     IOAuthProvider,
     IOAuthSigninService
-} from '$lib/server/modules/shared/oauth/core/interfaces';
-import { OAuthCallback, OAuthTokens } from '$lib/server/modules/shared/oauth/core/models';
+} from '$lib/server/modules/shared/oauth/signin/core/interfaces';
+import { OAuthCallback } from '$lib/server/modules/shared/oauth/signin/core/models';
 import type { RequestEvent } from '@sveltejs/kit';
 import type { DependencyContainer } from 'tsyringe';
 
