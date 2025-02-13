@@ -1,9 +1,9 @@
-import { pgTable, varchar } from 'drizzle-orm/pg-core';
+import { integer, pgTable, varchar } from 'drizzle-orm/pg-core';
 import { createSelectSchema } from 'drizzle-zod';
-import { buildIntegerFkCreator, generateIntegerPkField } from '../../utils';
+import { buildIntegerFkCreator } from '../../utils';
 
 export const timezone = pgTable('timezones', {
-    id: generateIntegerPkField(),
+    id: integer('id').primaryKey().generatedByDefaultAsIdentity(),
     tzIdentifier: varchar('tz_identifier', { length: 30 }).notNull()
 });
 

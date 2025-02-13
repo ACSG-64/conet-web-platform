@@ -1,0 +1,320 @@
+{
+    "id": "caafa62c-34be-4681-b99a-4cb72ca39e46",
+    "prevId": "781be8f2-8731-4596-a488-8f46f8bf7e67",
+    "version": "7",
+    "dialect": "postgresql",
+    "tables": {
+        "public.languages": {
+            "name": "languages",
+            "schema": "",
+            "columns": {
+                "iso": {
+                    "name": "iso",
+                    "type": "char(2)",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "name": {
+                    "name": "name",
+                    "type": "varchar(15)",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "policies": {},
+            "checkConstraints": {},
+            "isRLSEnabled": false
+        },
+        "public.timezones": {
+            "name": "timezones",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "identity": {
+                        "type": "byDefault",
+                        "name": "timezones_id_seq",
+                        "schema": "public",
+                        "increment": "1",
+                        "startWith": "1",
+                        "minValue": "1",
+                        "maxValue": "2147483647",
+                        "cache": "1",
+                        "cycle": false
+                    }
+                },
+                "tz_identifier": {
+                    "name": "tz_identifier",
+                    "type": "varchar(30)",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "policies": {},
+            "checkConstraints": {},
+            "isRLSEnabled": false
+        },
+        "public.discord_accounts": {
+            "name": "discord_accounts",
+            "schema": "",
+            "columns": {
+                "user_id": {
+                    "name": "user_id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "account_id": {
+                    "name": "account_id",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "notification_channel_id": {
+                    "name": "notification_channel_id",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "discord_accounts_user_id_users_id_fk": {
+                    "name": "discord_accounts_user_id_users_id_fk",
+                    "tableFrom": "discord_accounts",
+                    "tableTo": "users",
+                    "columnsFrom": ["user_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "discord_accounts_account_id_unique": {
+                    "name": "discord_accounts_account_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["account_id"]
+                },
+                "discord_accounts_notification_channel_id_unique": {
+                    "name": "discord_accounts_notification_channel_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["notification_channel_id"]
+                }
+            },
+            "policies": {},
+            "checkConstraints": {},
+            "isRLSEnabled": false
+        },
+        "public.github_accounts": {
+            "name": "github_accounts",
+            "schema": "",
+            "columns": {
+                "user_id": {
+                    "name": "user_id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "object_id": {
+                    "name": "object_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "node_id": {
+                    "name": "node_id",
+                    "type": "varchar(30)",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {
+                "gh_idx": {
+                    "name": "gh_idx",
+                    "columns": [
+                        {
+                            "expression": "object_id",
+                            "isExpression": false,
+                            "asc": true,
+                            "nulls": "last"
+                        }
+                    ],
+                    "isUnique": true,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                }
+            },
+            "foreignKeys": {
+                "github_accounts_user_id_users_id_fk": {
+                    "name": "github_accounts_user_id_users_id_fk",
+                    "tableFrom": "github_accounts",
+                    "tableTo": "users",
+                    "columnsFrom": ["user_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "github_accounts_node_id_unique": {
+                    "name": "github_accounts_node_id_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["node_id"]
+                }
+            },
+            "policies": {},
+            "checkConstraints": {},
+            "isRLSEnabled": false
+        },
+        "public.users": {
+            "name": "users",
+            "schema": "",
+            "columns": {
+                "id": {
+                    "name": "id",
+                    "type": "integer",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "identity": {
+                        "type": "always",
+                        "name": "users_id_seq",
+                        "schema": "public",
+                        "increment": "1",
+                        "startWith": "1",
+                        "minValue": "1",
+                        "maxValue": "2147483647",
+                        "cache": "1",
+                        "cycle": false
+                    }
+                },
+                "uuid": {
+                    "name": "uuid",
+                    "type": "char(21)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "name": {
+                    "name": "name",
+                    "type": "varchar(50)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "surname": {
+                    "name": "surname",
+                    "type": "varchar(50)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "username": {
+                    "name": "username",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "image_url": {
+                    "name": "image_url",
+                    "type": "varchar(75)",
+                    "primaryKey": false,
+                    "notNull": false
+                },
+                "primary_language_id": {
+                    "name": "primary_language_id",
+                    "type": "char(2)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "timezone_id": {
+                    "name": "timezone_id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "created_at": {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "default": "now()"
+                }
+            },
+            "indexes": {
+                "uuid_idx": {
+                    "name": "uuid_idx",
+                    "columns": [
+                        {
+                            "expression": "uuid",
+                            "isExpression": false,
+                            "asc": true,
+                            "nulls": "last"
+                        }
+                    ],
+                    "isUnique": true,
+                    "concurrently": false,
+                    "method": "btree",
+                    "with": {}
+                }
+            },
+            "foreignKeys": {
+                "users_primary_language_id_languages_iso_fk": {
+                    "name": "users_primary_language_id_languages_iso_fk",
+                    "tableFrom": "users",
+                    "tableTo": "languages",
+                    "columnsFrom": ["primary_language_id"],
+                    "columnsTo": ["iso"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                },
+                "users_timezone_id_timezones_id_fk": {
+                    "name": "users_timezone_id_timezones_id_fk",
+                    "tableFrom": "users",
+                    "tableTo": "timezones",
+                    "columnsFrom": ["timezone_id"],
+                    "columnsTo": ["id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "cascade"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "users_uuid_unique": {
+                    "name": "users_uuid_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["uuid"]
+                },
+                "users_username_unique": {
+                    "name": "users_username_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["username"]
+                }
+            },
+            "policies": {},
+            "checkConstraints": {},
+            "isRLSEnabled": false
+        }
+    },
+    "enums": {},
+    "schemas": {},
+    "sequences": {},
+    "roles": {},
+    "policies": {},
+    "views": {},
+    "_meta": {
+        "columns": {},
+        "schemas": {},
+        "tables": {}
+    }
+}
