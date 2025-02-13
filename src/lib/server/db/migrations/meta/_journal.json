@@ -15,6 +15,13 @@
             "when": 1739408671935,
             "tag": "0001_glamorous_mordo",
             "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "7",
+            "when": 1739469855150,
+            "tag": "0002_fearless_ezekiel",
+            "breakpoints": true
         }
     ]
 }
