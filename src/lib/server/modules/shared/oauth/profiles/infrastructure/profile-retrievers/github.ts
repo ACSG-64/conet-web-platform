@@ -10,7 +10,18 @@ export class GithubProfileRetrieverService implements IOAuthProfileRetrieverServ
     async getProfile(tokens: OAuthTokens): Promise<GithubProfile> {
         const octokit = new Octokit({ auth: tokens.accessToken });
         try {
-            const request = await octokit.request('GET /user');
+            const request = await octokit.request('GET /user', {
+                /**
+                 * To facilitate migration to the new [node_id] format, you can use the
+                 * X-Github-Next-Global-ID header in your [...] requests. [...]
+                 * Setting the value to 1 will force the response payload to always use the new ID
+                 * format for any object that you requested the id field for.
+                 *
+                 * For more information, see:
+                 * https://docs.github.com/en/graphql/guides/migrating-graphql-global-node-ids
+                 */
+                headers: { 'x-github-next-global-id': 1 }
+            });
             const { id, node_id, login, html_url, avatar_url } = request.data;
             return new GithubProfile({
                 id,
