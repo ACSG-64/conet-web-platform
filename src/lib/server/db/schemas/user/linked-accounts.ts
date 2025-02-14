@@ -1,6 +1,6 @@
 import { integer, pgTable, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
-import { createUserFk } from './user';
 import { createSelectSchema } from 'drizzle-zod';
+import { createUserFk, userSchema } from './user';
 
 export const githubAccount = pgTable(
     'github_accounts',
@@ -18,14 +18,14 @@ export const discordAccount = pgTable('discord_accounts', {
     notificationChannelId: varchar('notification_channel_id', { length: 25 }).notNull().unique()
 });
 
-export const githubAccountTableSchema = createSelectSchema(githubAccount, {
-    userId: (schema) => schema.positive(),
+export const githubAccountSchema = createSelectSchema(githubAccount, {
+    userId: () => userSchema.shape.id,
     objectId: (schema) => schema.positive(),
-    nodeId: (schema) => schema.base64().nonempty()
+    nodeId: (schema) => schema.nonempty()
 });
 
 export const discordAccountSchema = createSelectSchema(discordAccount, {
-    userId: (schema) => schema.positive(),
+    userId: () => userSchema.shape.id,
     accountId: (schema) =>
         schema.regex(/^\d+$/, { message: 'Must be a numeric string' }).nonempty(),
     notificationChannelId: (schema) =>

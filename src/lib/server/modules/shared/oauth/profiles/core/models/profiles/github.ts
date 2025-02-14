@@ -1,10 +1,11 @@
+import { githubAccountSchema } from '$lib/server/db/schemas';
 import { BrandedClass } from '$lib/server/modules/shared/models/abstract';
 import { zodSchemaParser } from '$lib/server/utils/custom-zod-schema-parser';
 import { z } from 'zod';
 
 const schema = z.object({
-    id: z.number().int().positive(),
-    nodeId: z.string().base64().nonempty(),
+    id: githubAccountSchema.shape.objectId,
+    nodeId: githubAccountSchema.shape.nodeId,
     username: z.string().nonempty(),
     profileUrl: z.string().url().nonempty(),
     profilePictureUrl: z.string().url().nonempty()
