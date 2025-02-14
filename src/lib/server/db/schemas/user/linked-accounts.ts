@@ -7,7 +7,7 @@ export const githubAccount = pgTable(
     {
         userId: createUserFk().primaryKey(),
         objectId: integer('object_id').notNull(),
-        nodeId: varchar('node_id', { length: 50 }).notNull().unique()
+        nodeId: varchar('node_id', { length: 20 }).notNull().unique()
     },
     (t) => [uniqueIndex('gh_idx').on(t.objectId)]
 );
