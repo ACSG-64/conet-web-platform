@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/public';
+import { env as pEnv } from '$env/dynamic/private';
 import * as Sentry from '@sentry/sveltekit';
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 
@@ -16,7 +17,13 @@ Sentry.init({
     replaysOnErrorSampleRate: 1.0,
 
     // If you don't want to use Session Replay, just remove the line below:
-    integrations: [replayIntegration()]
+    integrations: [replayIntegration()],
+
+    beforeSend(event) {
+        // Send data only in production
+        if (pEnv.ENV !== 'production') return null;
+        return event;
+    }
 });
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`

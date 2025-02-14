@@ -7,11 +7,16 @@ import { sequence } from '@sveltejs/kit/hooks';
 
 Sentry.init({
     dsn: env.SENTRY_DSN,
-    tracesSampleRate: 1
+    tracesSampleRate: 1,
+
+    beforeSend(event) {
+        // Send data only in production
+        if (env.ENV !== 'production') return null;
+        return event;
+    }
 });
 
-const handleAuth: Handle = async ({ event, resolve }) => resolve(event);
 const handleParaglide: Handle = i18n.handle();
 
-export const handle: Handle = sequence(Sentry.sentryHandle(), handleAuth, handleParaglide);
+export const handle: Handle = sequence(Sentry.sentryHandle(), handleParaglide);
 export const handleError = Sentry.handleErrorWithSentry();

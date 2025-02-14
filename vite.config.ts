@@ -11,7 +11,8 @@ export default defineConfig({
         sentrySvelteKit({
             sourceMapsUploadOptions: {
                 org: process.env.SENTRY_ORG as string,
-                project: process.env.SENTRY_PROJECT as string
+                project: process.env.SENTRY_PROJECT as string,
+                telemetry: false
             }
         }),
         sveltekit(),
