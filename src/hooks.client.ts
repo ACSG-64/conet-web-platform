@@ -1,5 +1,4 @@
 import { env } from '$env/dynamic/public';
-import { env as pEnv } from '$env/dynamic/private';
 import * as Sentry from '@sentry/sveltekit';
 import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
 
@@ -21,7 +20,7 @@ Sentry.init({
 
     beforeSend(event) {
         // Send data only in production
-        if (pEnv.ENV !== 'production') return null;
+        if (env.PUBLIC_ENV !== 'production') return null;
         return event;
     }
 });
