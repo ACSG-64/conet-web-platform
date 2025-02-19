@@ -70,6 +70,7 @@
     "dependencies": {
         "@discordjs/rest": "^2.4.3",
         "@inlang/paraglide-sveltekit": "^0.15.5",
+        "@octokit/auth-app": "^7.1.5",
         "@octokit/auth-oauth-app": "^8.1.2",
         "@octokit/core": "^5.2.0",
         "@octokit/request-error": "^6.1.7",
